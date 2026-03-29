@@ -109,3 +109,19 @@ def recommend_snack(mood,sweet_level):
         return random.choice(salty_snacks[mood])
     else:
         return random.choice(sweet_snacks[mood]+ salty_snacks[mood])
+
+#Function 3 break time
+def break_excuse(deadline):
+    #Gives you a length of time to take a break for
+    #Deadline : time in minutes until deadline
+    if not (0 < deadline):
+        raise ValueError("Deadline has already passed.")
+   
+    if (deadline <= 60) return "You don't have time for a break, get to work!"
+    else if (60 < deadline <= 120): return "You can take a 5-10 minute break, make sure to set a timer!"
+    else if (120 < deadline <= 240) return "You can take a 10-15 minute break, make sure to set a timer!"
+    else if (240 < deadline <= 480) return "You can take a 20-30 minute break, make sure to set a timer!"
+    else if (480 < deadline <= 1440) return "No rush, take an hour long break, or a few 15 minute breaks."
+    else if (1440 < deadline) return "It's not due until tomorrow, you have time, get back to it later!"
+
+    

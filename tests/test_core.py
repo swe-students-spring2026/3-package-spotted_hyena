@@ -1,5 +1,6 @@
 import pytest
 import builtins
+import sys
 from procastinatrix.core import *
 
 def test_motivation_returns_string():
@@ -98,10 +99,56 @@ def test_invalid_sweet_tooth_below_range():
     with pytest.raises(ValueError):
         recommend_snack("happy", -1)
 
-
 def test_invalid_mood_raises_error():
     with pytest.raises(ValueError):
         recommend_snack("angry", 5)
+
+@pytest.mark.parametrize("deadline", range(1, 1442))
+def test_valid_break_return_string(deadline):
+    result = break_excuse(deadline)
+    assert isinstance(result, str)
+
+@pytest.mark.parametrize("deadline", range(1, 61))
+def test_break_return_for_shortest_deadline(deadline):
+    result = break_excuse(deadline)
+    assert result == "You don't have time for a break, get to work!"
+
+@pytest.mark.parametrize("deadline", range(61, 121))
+def test_break_return_for_short_deadline(deadline):
+    result = break_excuse(deadline)
+    assert result == "You can take a 5-10 minute break, make sure to set a timer!"
+
+@pytest.mark.parametrize("deadline", range(121, 241))
+def test_break_return_for_medium_deadline(deadline):
+    result = break_excuse(deadline)
+    assert result == "You can take a 10-15 minute break, make sure to set a timer!"
+
+@pytest.mark.parametrize("deadline", range(241, 481))
+def test_break_return_for_long_deadline(deadline):
+    result = break_excuse(deadline)
+    assert result == "You can take a 20-30 minute break, make sure to set a timer!"
+
+@pytest.mark.parametrize("deadline", range(481, 1441))
+def test_break_return_for_longer_deadline(deadline):
+    result = break_excuse(deadline)
+    assert result == "No rush, take an hour long break, or a few 15 minute breaks."
+
+@pytest.mark.parametrize("deadline", range(1441, 1450))
+def test_break_return_for_longest_deadline(deadline):
+    result = break_excuse(deadline)
+    assert result == return "It's not due until tomorrow, you have time, get back to it later!"
+ 
+def test_edge_value_one():
+    result = break_excuse(1)
+    assert isinstance(result, str)
+
+def test_edge_value_max():
+    result = break_excuse(sys.maxsize)
+    assert isinstance(result, str)
+
+def test_invalid_deadline_below_range():
+    with pytest.raises(ValueError):
+        break_excuse(0)
 
 
 
