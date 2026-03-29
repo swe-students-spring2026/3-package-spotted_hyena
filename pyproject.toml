@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "procastinatrix"
+version = "0.1.0"
+description = "A procrastination helper package"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+  { name = "Abid Ali Qureshi" }
+]
+dependencies = []
+
+[tool.setuptools]
+packages = ["procastinatrix"]
