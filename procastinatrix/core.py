@@ -56,11 +56,15 @@ RESET_ACTIVITIES = [
 def instructions():
    return ("Functions" \
    "1. motivation(): Returns words of encouragement"
-   "2. fake_productivity(): Asks type of activity you are interested in and returns an activity based on your type")
+   "2. fake_productivity(): Asks type of activity you are interested in and returns an activity based on your type"
+   "3. recommend_snack(mood, sweet_level): returns a snack based on mood and sweet level"
+   "4. break_excuse(deadline): suggests a break time based on deadline provided")
 
+# Function 1 motivation and encouragement
 def motivation():
   return random.choice(ENCOURAGEMENTS) 
 
+# Function 2 productive activities
 def fake_productivity():
   activity_arr = ["1. Quick Activity", "2. Productive Activity", "3. Creative Activity", "4. Social Activity", "5. Reset Activity"]
   for choice in activity_arr:
@@ -82,7 +86,7 @@ def fake_productivity():
 
 # need to intall wheel, sdist, pytest
   
-# Function 2 snack recommender
+# Function 3 snack recommender
 def recommend_snack(mood,sweet_level):
     '''Recommends snacks based on sweet tooth level and mood'''
     
@@ -110,18 +114,24 @@ def recommend_snack(mood,sweet_level):
     else:
         return random.choice(sweet_snacks[mood]+ salty_snacks[mood])
 
-#Function 3 break time
+#Function 4 break time
 def break_excuse(deadline):
     #Gives you a length of time to take a break for
     #Deadline : time in minutes until deadline
-    if not (0 < deadline):
+    if deadline <= 0:
         raise ValueError("Deadline has already passed.")
    
-    if (deadline <= 60) return "You don't have time for a break, get to work!"
-    else if (60 < deadline <= 120): return "You can take a 5-10 minute break, make sure to set a timer!"
-    else if (120 < deadline <= 240) return "You can take a 10-15 minute break, make sure to set a timer!"
-    else if (240 < deadline <= 480) return "You can take a 20-30 minute break, make sure to set a timer!"
-    else if (480 < deadline <= 1440) return "No rush, take an hour long break, or a few 15 minute breaks."
-    else if (1440 < deadline) return "It's not due until tomorrow, you have time, get back to it later!"
+    if deadline <= 60:
+        return "You don't have time for a break, get to work!"
+    elif (60 < deadline <= 120): 
+        return "You can take a 5-10 minute break, make sure to set a timer!"
+    elif (120 < deadline <= 240):
+        return "You can take a 10-15 minute break, make sure to set a timer!"
+    elif (240 < deadline <= 480):
+        return "You can take a 20-30 minute break, make sure to set a timer!"
+    elif (480 < deadline <= 1440):
+        return "No rush, take an hour long break, or a few 15 minute breaks."
+    elif (1440 < deadline):
+        return "It's not due until tomorrow, you have time, get back to it later!"
 
     
