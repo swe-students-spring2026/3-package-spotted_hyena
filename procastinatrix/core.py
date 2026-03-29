@@ -117,11 +117,53 @@ def break_excuse(deadline):
     if not (0 < deadline):
         raise ValueError("Deadline has already passed.")
    
-    if (deadline <= 60) return "You don't have time for a break, get to work!"
-    else if (60 < deadline <= 120): return "You can take a 5-10 minute break, make sure to set a timer!"
-    else if (120 < deadline <= 240) return "You can take a 10-15 minute break, make sure to set a timer!"
-    else if (240 < deadline <= 480) return "You can take a 20-30 minute break, make sure to set a timer!"
-    else if (480 < deadline <= 1440) return "No rush, take an hour long break, or a few 15 minute breaks."
-    else if (1440 < deadline) return "It's not due until tomorrow, you have time, get back to it later!"
+    if (deadline <= 60): return "You don't have time for a break, get to work!"
+    elif (60 < deadline <= 120): return "You can take a 5-10 minute break, make sure to set a timer!"
+    elif (120 < deadline <= 240): return "You can take a 10-15 minute break, make sure to set a timer!"
+    elif (240 < deadline <= 480): return "You can take a 20-30 minute break, make sure to set a timer!"
+    elif (480 < deadline <= 1440): return "No rush, take an hour long break, or a few 15 minute breaks."
+    elif (1440 < deadline): return "It's not due until tomorrow, you have time, get back to it later!"
 
-    
+#Function 4 procrastination plan
+def procrastination_plan(task, urgency, guilt_level):
+    #Returns a procrastination strategy based on urgency and guilt level.
+    if not task or not isinstance(task, str):
+        raise ValueError("Task must be a non-empty string.")
+    if not (0 <= urgency <= 10):
+        raise ValueError("Urgency must be between 0 and 10.")
+    if not (0 <= guilt_level <= 10):
+        raise ValueError("Guilt level must be between 0 and 10.")
+
+    if urgency >= 6 and guilt_level >= 6:
+        return f"Open {task}, review what needs to be done, and complete one small part to get started."
+    elif urgency >= 6:
+        return f"You should begin {task} soon. Consider taking a short reset, then start immediately."
+    elif guilt_level >= 6:
+        return f"If {task} is weighing on you, open it and make some visible progress, even if it is small."
+    else:
+        return f"Set a clear start time for {task} and commit to beginning when that time arrives."
+
+#Function 5 snack reward
+def motivation_line(snack, task):
+    #Returns a motivational line using a snack reward.
+    if not snack or not isinstance(snack, str):
+        raise ValueError("Snack must be a non-empty string.")
+    if not task or not isinstance(task, str):
+        raise ValueError("Task must be a non-empty string.")
+
+    return f"Complete {task}, and you can reward yourself with {snack}."
+
+#Function 6 return to woek
+def return_to_work_message(task, break_length):
+    #Returns a message encouraging you to return to your task.
+    if not task or not isinstance(task, str):
+        raise ValueError("Task must be a non-empty string.")
+    if break_length < 0:
+        raise ValueError("Break length cannot be negative.")
+
+    if break_length <= 10:
+        return f"Your break is complete. It is time to return to {task}."
+    elif break_length <= 30:
+        return f"You've had a long break. Get back to working on {task}."
+    else:
+        return f"You have been away for a while. Get started with {task} and move it forward."

@@ -136,7 +136,7 @@ def test_break_return_for_longer_deadline(deadline):
 @pytest.mark.parametrize("deadline", range(1441, 1450))
 def test_break_return_for_longest_deadline(deadline):
     result = break_excuse(deadline)
-    assert result == return "It's not due until tomorrow, you have time, get back to it later!"
+    assert result == "It's not due until tomorrow, you have time, get back to it later!"
  
 def test_edge_value_one():
     result = break_excuse(1)
@@ -150,7 +150,74 @@ def test_invalid_deadline_below_range():
     with pytest.raises(ValueError):
         break_excuse(0)
 
+# Function 4 Tests (Procrastination Plan)
+def test_procrastination_plan_high_urgency_and_guilt():
+    result = procrastination_plan("essay", 8, 8)
+    assert result == "Open essay, review what needs to be done, and complete one small part to get started."
 
+def test_procrastination_plan_high_urgency_only():
+    result = procrastination_plan("project", 7, 3)
+    assert result == "You should begin project soon. Consider taking a short reset, then start immediately."
+
+def test_procrastination_plan_high_guilt_only():
+    result = procrastination_plan("homework", 2, 9)
+    assert result == "If homework is weighing on you, open it and make some visible progress, even if it is small."
+
+def test_procrastination_plan_low_urgency_and_guilt():
+    result = procrastination_plan("studying", 2, 2)
+    assert result == "Set a clear start time for studying and commit to beginning when that time arrives."
+
+def test_procrastination_plan_invalid_task():
+    with pytest.raises(ValueError):
+        procrastination_plan("", 5, 5)
+
+def test_procrastination_plan_invalid_urgency():
+    with pytest.raises(ValueError):
+        procrastination_plan("essay", 11, 5)
+
+def test_procrastination_plan_invalid_guilt():
+    with pytest.raises(ValueError):
+        procrastination_plan("essay", 5, -1)
+
+
+# Function 5 Tests (Motivation Line)
+def test_motivation_line_returns_string():
+    result = motivation_line("chips", "your assignment")
+    assert isinstance(result, str)
+
+def test_motivation_line_expected_output():
+    result = motivation_line("chips", "your assignment")
+    assert result == "Complete your assignment, and you can reward yourself with chips."
+
+def test_motivation_line_invalid_snack():
+    with pytest.raises(ValueError):
+        motivation_line("", "homework")
+
+def test_motivation_line_invalid_task():
+    with pytest.raises(ValueError):
+        motivation_line("boba", "")
+
+
+# Function 6 Tests (Return to Work Message)
+def test_return_to_work_message_short_break():
+    result = return_to_work_message("coding", 5)
+    assert result == "Your break is complete. It is time to return to coding."
+
+def test_return_to_work_message_medium_break():
+    result = return_to_work_message("reading", 20)
+    assert result == "You've had a long break. Get back to working on reading."
+
+def test_return_to_work_message_long_break():
+    result = return_to_work_message("your report", 45)
+    assert result == "You have been away for a while. Get started with your report and move it forward."
+
+def test_return_to_work_message_invalid_task():
+    with pytest.raises(ValueError):
+        return_to_work_message("", 10)
+
+def test_return_to_work_message_invalid_break_length():
+    with pytest.raises(ValueError):
+        return_to_work_message("essay", -5)
 
 
 
