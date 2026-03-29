@@ -176,22 +176,22 @@ def test_procrastination_plan_invalid_guilt():
         procrastination_plan("essay", 5, -1)
 
 
-# Function 6 Tests (Motivation Line)
-def test_motivation_line_returns_string():
-    result = motivation_line("chips", "your assignment")
+# Function 6 Tests (reward)
+def test_reward_returns_string():
+    result = reward("chips", "your assignment")
     assert isinstance(result, str)
 
-def test_motivation_line_expected_output():
-    result = motivation_line("chips", "your assignment")
+def test_reward_expected_output():
+    result = reward("chips", "your assignment")
     assert result == "Complete your assignment, and you can reward yourself with chips."
 
-def test_motivation_line_invalid_snack():
+def test_reward_invalid_snack():
     with pytest.raises(ValueError):
-        motivation_line("", "homework")
+        reward("", "homework")
 
-def test_motivation_line_invalid_task():
+def test_reward_invalid_task():
     with pytest.raises(ValueError):
-        motivation_line("boba", "")
+        reward("boba", "")
 
 
 # Function 7 Tests (Return to Work Message)

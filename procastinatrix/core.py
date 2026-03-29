@@ -54,11 +54,14 @@ RESET_ACTIVITIES = [
 ]
 
 def instructions():
-   return ("Functions" \
-   "1. motivation(): Returns words of encouragement"
-   "2. fake_productivity(): Asks type of activity you are interested in and returns an activity based on your type"
-   "3. recommend_snack(mood, sweet_level): returns a snack based on mood and sweet level"
-   "4. break_excuse(deadline): suggests a break time based on deadline provided")
+   return ("Functions\n"
+   "1. motivation(): Returns words of encouragement\n"
+   "2. fake_productivity(): Asks type of activity you are interested in and returns an activity based on your type\n"
+   "3. recommend_snack(mood, sweet_level): returns a snack based on mood and sweet level\n"
+   "4. break_excuse(deadline): suggests a break time based on deadline provided\n"
+   "5. procrastination_plan(task, urgency, guilt_level): Returns a procrastination strategy based on urgency and guilt level\n"
+   "6. reward(reward, task): Returns a motivational line using a snack reward\n"
+   "7. return_to_work_message(task, break_length): Returns a message encouraging you to return to your task")
 
 # Function 1 motivation and encouragement
 def motivation():
@@ -153,17 +156,17 @@ def procrastination_plan(task, urgency, guilt_level):
     else:
         return f"Set a clear start time for {task} and commit to beginning when that time arrives."
 
-#Function 6 snack reward
-def motivation_line(snack, task):
+#Function 6 reward
+def reward(reward, task):
     #Returns a motivational line using a snack reward.
-    if not snack or not isinstance(snack, str):
+    if not reward or not isinstance(reward, str):
         raise ValueError("Snack must be a non-empty string.")
     if not task or not isinstance(task, str):
         raise ValueError("Task must be a non-empty string.")
 
-    return f"Complete {task}, and you can reward yourself with {snack}."
+    return f"Complete {task}, and you can reward yourself with {reward}."
 
-#Function 7 return to woek
+#Function 7 return to work
 def return_to_work_message(task, break_length):
     #Returns a message encouraging you to return to your task.
     if not task or not isinstance(task, str):
