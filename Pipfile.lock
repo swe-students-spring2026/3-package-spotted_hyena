@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "92d7ffce5a2c7607ea649c36c4e4820d531192ef0041b6dfc99e9898ea39a7fc"
+            "sha256": "a9f59b47ecfa86384835a0dbf534e8f085da073ffae04f28af0a765d876f0c2b"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -15,7 +15,17 @@
             }
         ]
     },
-    "default": {},
+    "default": {
+        "procastinatrix": {
+            "hashes": [
+                "sha256:210e0f439170481777873b6f7f224bfb42c5e3184c394340b4b1bc663037d81f",
+                "sha256:461ad6fff94904e577c1051fad8d58f4fefb9844d313737fa01c506e8ef29459"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.9'",
+            "version": "==0.1.1"
+        }
+    },
     "develop": {
         "build": {
             "hashes": [
