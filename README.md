@@ -40,12 +40,26 @@ Returns a random encouraging message
 ```python
 lib.motivation()
 ```
+Example Output:
+```python
+"You're doing better than you think."
+```
 
 ### `fake_productivity()`
 Prompts the user to choose a category and returns an activity in that category
 
 ```python
 lib.fake_productivity()
+```
+Example Ouput:
+```python
+1. Quick Activity
+2. Productive Activity
+3. Creative Activity
+4. Social Activity
+5. Reset Activity
+Choose which type of activity you would want? 3
+Sketch something random
 ```
 
 ### `recommend_snack(mood, sweet_level)`
@@ -56,6 +70,10 @@ Returns a snack based on mood and sweet level
 ```python
 lib.recommend_snack("stressed", 8)
 ```
+Example Ouput:
+```python
+"cookies"
+```
 
 ### `break_excuse(deadline)`
 Suggests a break time based on deadline provided
@@ -63,6 +81,10 @@ Suggests a break time based on deadline provided
 
 ```python
 lib.break_excuse(120)
+```
+Example Output:
+```python
+"You can take a 5-10 minute break, make sure to set a timer!"
 ```
 
 ### `procrastination_plan(task, urgency, guilt_level)`
@@ -74,6 +96,10 @@ Returns a procrastination strategy based on urgency and guilt level
 ```python
 lib.procrastination_plan("essay", 7, 8)
 ```
+Example Output:
+```python
+"Open essay, review what needs to be done, and complete one small part to get started."
+```
 
 ### `reward(snack, task)`
 Returns a reward message encouraging the user to complete a task.
@@ -82,6 +108,10 @@ Returns a reward message encouraging the user to complete a task.
 
 ```python
 lib.reward("boba", "essay")
+```
+Example Output:
+```python
+"Complete essay, and you can reward yourself with boba."
 ```
 
 ### `return_to_work_message(task, break_length)`
@@ -92,6 +122,11 @@ Returns a message encouraging the user to return to work after a break.
 ```python
 lib.return_to_work_message("essay", 20)
 ```
+Example Output:
+```python
+"You've had a long break. Get back to working on essay."
+```
+
 ### Example Program
 A complete example program using all package functions is included here:
 
