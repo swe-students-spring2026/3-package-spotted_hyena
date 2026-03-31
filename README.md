@@ -58,8 +58,8 @@ Example Ouput:
 3. Creative Activity
 4. Social Activity
 5. Reset Activity
-Choose which type of activity you would want? 3
-Sketch something random
+"Choose which type of activity you would want?" 3
+"Sketch something random"
 ```
 
 ### `recommend_snack(mood, sweet_level)`
